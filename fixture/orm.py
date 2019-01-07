@@ -3,6 +3,7 @@ from datetime import datetime
 from model.group import Group
 from model.contact import Contact
 
+
 class ORMFixture:
 
     db = Database()
@@ -31,12 +32,12 @@ class ORMFixture:
     def __init__(self, host, name, user, password):
         self.db.bind('mysql', host=host, database=name, user=user, password=password)
         self.db.generate_mapping()
+        sql_debug(True)
 
     def convert_group_to_model(self, groups):
         def convert(group):
             return Group(id=str(group.id), header=group.header, footer=group.footer)
         return list(map(convert, groups))
-
 
     @db_session
     def get_group_list(self):
