@@ -75,7 +75,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
-
     def modify_first_group(self, new_group_data):
         wd = self.app.wd
         self.open_groups_page()
