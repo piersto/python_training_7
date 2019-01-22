@@ -31,7 +31,6 @@ class ORMFixture:
         workphone = Optional(str, column='work')
         secondaryphone = Optional(str, column='phone2')"""
 
-
     def __init__(self, host, name, user, password):
         self.db.bind('mysql', host=host, database=name, user=user, password=password)
         self.db.generate_mapping()

@@ -8,6 +8,7 @@ import jsonpickle
 fixture = None
 target = None
 
+
 def load_config(file):
     global target
     if target is None:
@@ -33,7 +34,6 @@ def check_ui(request):
     return request.config.getoption('--check_ui')
 
 
-
 @pytest.fixture(scope='session')
 def db(request):
     db_config = load_config(request.config.getoption('--target'))['db']
@@ -42,7 +42,6 @@ def db(request):
         dbfixture.destroy()
     request.addfinalizer(fin)
     return dbfixture
-
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -58,7 +57,6 @@ def pytest_addoption(parser):
     parser.addoption('--browser', action='store', default='chrome')
     parser.addoption('--target', action='store', default='target.json')
     parser.addoption('--check_ui', action='store_true')
-
 
 
 def pytest_generate_tests(metafunc):
